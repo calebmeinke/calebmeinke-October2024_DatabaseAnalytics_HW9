@@ -1,0 +1,43 @@
+#  Create tables
+
+#  Create "departments" table
+
+departments
+--
+dept_no VARCHAR PK
+dept_name VARCHAR
+
+#  Create "titles" table
+titles
+--
+title_id VARCHAR PK
+title VARCHAR
+
+#  Create "employees" table
+employees
+--
+emp_no INT PK
+emp_title_id VARCHAR FK >- titles.title_id
+birth_date DATE
+first_name VARCHAR
+last_name VARCHAR
+sex VARCHAR(1)
+hire_date DATE
+
+#  Create "dept_emp" table
+dept_emp
+--
+emp_no INT PK FK >- employees.emp_no
+dept_no VARCHAR PK FK >- departments.dept_no
+
+#  Create "dept_manager" table
+dept_manager
+--
+dept_no VARCHAR PK FK >- departments.dept_no
+emp_no INT PK FK >- employees.emp_no
+
+#  Create "salaries" table
+salaries
+--
+emp_no INT PK FK >- employees.emp_no
+salary INT
